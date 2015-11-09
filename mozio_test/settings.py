@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     # third-party apps
     'rest_framework',
     'rest_framework_gis',
+    'rest_framework_swagger',
 
     # project apps
     'core',

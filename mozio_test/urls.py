@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='index.html'), name="index"),
     url(r'^search/$', 'core.views.search', name="search"),
     url(r'^api/', include('api.urls')),
+    url(r'^api/docs/', include('rest_framework_swagger.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
 ]
