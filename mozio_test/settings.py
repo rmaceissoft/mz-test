@@ -82,16 +82,27 @@ WSGI_APPLICATION = 'mozio_test.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'mozio',
-        'HOST': '127.0.0.1',
-        'USER': 'mozio',
-        'PASSWORD': 'K4pUvgvyrCxHPL',
+if 'RDS_DB_NAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'NAME': os.environ['RDS_DB_NAME'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+        }
     }
-
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'NAME': 'mozio',
+            'HOST': '127.0.0.1',
+            'USER': 'mozio',
+            'PASSWORD': 'K4pUvgvyrCxHPL',
+        }
+    }
 
 
 # Internationalization
