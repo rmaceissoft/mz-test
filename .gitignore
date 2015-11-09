@@ -1,0 +1,30 @@
+# Editors
+.idea/
+
+# Files
+.DS_Store
+*.pyc
+*.syncbkp
+local_settings.py
+
+# Directories
+/public
+
+
+# Vagrant Ignores
+#################
+
+.vagrant
+Berksfile.lock
+*~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+/cookbooks
+
+# Bundler
+Gemfile.lock
+bin/*
+.bundle/*

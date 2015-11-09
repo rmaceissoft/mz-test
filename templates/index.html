@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block main_content %}
+<div ng-show="drawing">
+  <h1>Draw a bounding box for a new service area</h1>
+</div>
+<div ng-show="!drawing">
+  <h1>Review the service area boundaries</h1>
+  <p>Below are the coordinates of the bounding box highlighted. You can edit them by clicking on the visible vertices
+    or you can click on submit to create the service area or on clear to ignore the boundaries and start from scratch.</p>
+  <ul>
+    <li ng-repeat="point in coordinates">
+      {% verbatim %}
+      {{ point.lat() }}, {{ point.lng() }}
+      {% endverbatim %}
+    </li>
+  </ul>
+  <button type="button" ng-click="submit()">Submit</button>
+  <button type="button" ng-click="cancel()">Clear</button>
+</div>
+{% endblock %}
+
+
+{% block extra_head %}
+  <script src="{% static "js/index.js" %}" type="text/javascript"></script>
+  <script src="//maps.googleapis.com/maps/api/js?signed_in=true&libraries=drawing&callback=onGoogleReady" async defer></script>
+{% endblock %}
